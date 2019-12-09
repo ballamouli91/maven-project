@@ -1,0 +1,11 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Hello') {
+         steps {
+            checkout([$class: 'GitSCM', branches: [[name: 'v0.4']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jleetutorial/maven-project.git']]])
+         }
+      }
+   }
+}
