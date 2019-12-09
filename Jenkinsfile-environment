@@ -1,0 +1,44 @@
+currentBuild.description = "My custom build description"
+pipeline {
+// Stage-level agent sectio
+    agent none 
+    environment {
+  sadasd = "byebye"
+   SERVICE_CREDS = credentials('tomcat')
+}
+
+   stages {
+        
+      stage('Hello') {
+          agent { label 'master'  }
+          environment {
+                NAME = "Alan"
+            }
+         steps {
+             echo "${env.sadasd}"
+             echo "${env.SERVICE_CREDS}"
+             echo "${env.NAME}"
+             script {
+                    env.TEST_VARIABLE = "some test value"
+                }
+
+                echo "TEST_VARIABLE = ${env.TEST_VARIABLE}"
+                
+                echo "TEST_VARIABLE = ${env.TEST_VARIABLE}"
+
+                withEnv(["ANOTHER_ENV_VAR=here is some value"]) {
+                    echo "ANOTHER_ENV_VAR = ${env.ANOTHER_ENV_VAR}"
+                }
+
+             //sh "printenv"
+             // echo "The build number is ${env.BUILD_NUMBER}"
+             //   echo "You can also use \${BUILD_NUMBER} -> ${BUILD_NUMBER}"
+             //   sh 'echo "I can access $BUILD_NUMBER in shell command as well."'
+           // checkout([$class: 'GitSCM', branches: [[name: 'v0.4']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jleetutorial/maven-project.git']]])
+         
+             
+         }
+      
+         }
+      }
+   }
