@@ -8,7 +8,8 @@ pipeline {
             
             withMaven(jdk: 'java', maven: 'maven') {
     mvn clean package
-}
+} 
+        }
                
             
             post {
