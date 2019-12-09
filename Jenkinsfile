@@ -24,13 +24,14 @@ pipeline {
             // failed, record the test results and archive the jar file.
             success {
               // junit '**/target/surefire-reports/TEST-*.xml'
-               archiveArtifacts '**/target/*.jar'
+               archiveArtifacts '**/target/*.war'
             }
          }
       }
       stage('deploy to staging') {
          steps {
             build job: 'deploy-to-staging'
+      }
       }
    }
 }
