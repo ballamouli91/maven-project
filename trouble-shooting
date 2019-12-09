@@ -1,0 +1,41 @@
+FAILURE 1: **\target\*.war: No such file or directory
+Solution: Jenkins is not able to find the the war file baed on the regex matching, we need to specify the full path there to the war file in the Jenkinsfile , for example, /var/jenkins_home/workspace/package_pipelpine/webapp/target/*.war (change it the actual path on your laptop). instead of **\target\*.war 
+
+Failure 2: 'scp' is not recognized as an internal or external command
+Take a look at 
+
+https://www.udemy.com/the-complete-jenkins-course-for-developers-and-devops/learn/v4/questions/3513134
+
+
+
+Failure 3: Store key in cache issue
+The server's host key is not cached in the registry. You
+have no guarantee that the server is the computer you
+think it is.
+The server's ssh-ed25519 key fingerprint is:
+ssh-ed25519 256 c8:27:c4:b7:e6:64:b0:4a:c1:55:48:c2:b6:62:7a:9a
+If you trust this host, enter "y" to add the key to
+PuTTY's cache and carry on connecting.
+If you want to carry on connecting just once, without
+adding the key to the cache, enter "n".
+If you do not trust this host, press Return to abandon the
+connection.
+Store key in cache? (y/n) Connection abandoned.
+Lost connection
+Solution:
+
+SSH manually to the host, once you connect manually, the first time, then come back to this and try again.
+
+It's just that when SSH connects for the first time, it to asks you "hey, is this valid!?", but the Jenkins job can't respond to that.
+
+Failure 4: Permission Denied
+scp: /var/lib/tomcat8/webapps/webapp.war: Permission denied 
+
+https://askubuntu.com/questions/703632/permission-denied-while-doplying-tomcat-8-webapp-on-amaon-ec2
+
+Failure 5: Host key verification issue
+[Deploy to Staging] Host key verification failed.
+[Deploy to Staging] lost connection
+Take a look at 
+
+https://askubuntu.com/questions/45679/ssh-connection-problem-with-host-key-verification-failed-error 
