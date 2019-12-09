@@ -1,14 +1,16 @@
 pipeline {
     agent any
     tools { 
-        tool name: 'maven', type: 'maven' 
+        maven 'maven'
     }
     stages{
         stage('Build'){
             
-            steps {
-                sh 'mvn clean package'
-            }
+            withMaven(jdk: 'java', maven: 'maven') {
+    mvn clean package
+}
+               
+            
             post {
                 success {
                     echo 'Now Archiving...'
